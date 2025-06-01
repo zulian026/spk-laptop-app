@@ -143,3 +143,16 @@ Silakan **fork**, buat **pull request**, atau ajukan **issue** untuk diskusi fit
 ## 📄 Lisensi
 
 Proyek ini dilisensikan di bawah **MIT License**.
+---
+
+## 👨‍💻 Anggota Kelompok
+
+Berikut adalah anggota yang berkontribusi dalam pengembangan proyek ini:
+
+| No | Nama Lengkap         | NIM           |
+|----|----------------------|---------------|
+| 1  | Zulian Pratama       | 211001001     |
+| 2  | Fadli Ramadhan       | 211001002     |
+| 3  | Salsabila Zahra      | 211001003     |
+| 4  | Daffa Hidayatullah   | 211001004     |
+| 5  | Ayu Lestari          | 211001005     |
