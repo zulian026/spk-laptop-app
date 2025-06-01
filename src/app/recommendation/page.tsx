@@ -31,6 +31,7 @@ export default function RecommendationPage() {
     }
   }
 
+  
   const getKebutuhanText = (kebutuhan: string) => {
     switch (kebutuhan) {
       case 'gaming': return 'Gaming & Entertainment'
