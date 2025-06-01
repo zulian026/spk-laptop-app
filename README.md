@@ -156,5 +156,5 @@ Berikut adalah anggota yang berkontribusi dalam pengembangan proyek ini:
 | 1   | Zulian Alhisyam  | 2022610026 |
 | 2   | Azli Ahmad Kevin | 2022610027 |
 | 3   | Dori Frans Dika  | 2110010018 |
-| 4   | Fikri Hidayat    | 2110010034 |
-| 5   | Ahmad Hafizil    | 2110010031 |
+| 4   | Fikri Hidayat    | 2110010031 |
+| 5   | Ahmad Hafizil    | 2110010034 |
