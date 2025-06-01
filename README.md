@@ -6,7 +6,7 @@ Sistem Pendukung Keputusan (SPK) untuk memberikan rekomendasi laptop berdasarkan
 
 ## 🚀 Live Demo
 
-🔗 [Klik untuk melihat aplikasi live](https://spk-laptop-app.vercel.app)
+🔗 [Klik untuk melihat aplikasi live](https://spk-laptop-app.vercel.app/)
 
 ---
 
