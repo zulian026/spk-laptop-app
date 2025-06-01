@@ -24,13 +24,13 @@ Sistem Pendukung Keputusan (SPK) untuk memberikan rekomendasi laptop berdasarkan
 
 ## 🛠️ Teknologi yang Digunakan
 
-| Kategori     | Teknologi                     |
-|--------------|-------------------------------|
+| Kategori     | Teknologi                        |
+| ------------ | -------------------------------- |
 | **Frontend** | Next.js 15, React 18, TypeScript |
-| **Styling**  | Tailwind CSS                  |
-| **Database** | Supabase (PostgreSQL)         |
-| **Icons**    | Lucide React                  |
-| **Metode**   | TOPSIS                        |
+| **Styling**  | Tailwind CSS                     |
+| **Database** | Supabase (PostgreSQL)            |
+| **Icons**    | Lucide React                     |
+| **Metode**   | TOPSIS                           |
 
 ---
 
@@ -76,12 +76,15 @@ npm run dev
 ## 🧱 Struktur Database
 
 ### 📁 `laptops`
+
 Data spesifikasi laptop, termasuk harga, prosesor, RAM, storage, GPU, dll.
 
 ### 📁 `criteria`
+
 Daftar kriteria dengan bobot masing-masing yang digunakan dalam perhitungan TOPSIS.
 
 ### 📁 `recommendations`
+
 Riwayat hasil rekomendasi pengguna.
 
 ---
@@ -109,27 +112,27 @@ Langkah-langkah perhitungan dalam sistem ini:
 
 ## 🧮 Kriteria Penilaian & Bobot
 
-| Kriteria   | Tipe     | Bobot | Penjelasan |
-|------------|----------|-------|------------|
-| Harga      | Cost     | 20%   | Semakin murah semakin baik |
-| Processor  | Benefit  | 15%   | Semakin tinggi performanya semakin baik |
-| RAM        | Benefit  | 15%   | Kapasitas besar lebih baik |
-| Storage    | Benefit  | 10%   | Semakin besar semakin baik |
-| GPU        | Benefit  | 10%   | Kinerja grafis lebih tinggi lebih baik |
-| Layar      | Benefit  | 8%    | Ukuran sesuai kebutuhan desain/visual |
-| Berat      | Cost     | 7%    | Semakin ringan semakin baik |
-| Baterai    | Benefit  | 15%   | Daya tahan lebih lama lebih baik |
+| Kriteria  | Tipe    | Bobot | Penjelasan                              |
+| --------- | ------- | ----- | --------------------------------------- |
+| Harga     | Cost    | 20%   | Semakin murah semakin baik              |
+| Processor | Benefit | 15%   | Semakin tinggi performanya semakin baik |
+| RAM       | Benefit | 15%   | Kapasitas besar lebih baik              |
+| Storage   | Benefit | 10%   | Semakin besar semakin baik              |
+| GPU       | Benefit | 10%   | Kinerja grafis lebih tinggi lebih baik  |
+| Layar     | Benefit | 8%    | Ukuran sesuai kebutuhan desain/visual   |
+| Berat     | Cost    | 7%    | Semakin ringan semakin baik             |
+| Baterai   | Benefit | 15%   | Daya tahan lebih lama lebih baik        |
 
 ---
 
 ## 🎯 Penyesuaian Bobot Berdasarkan Kebutuhan
 
-| Kebutuhan    | Prioritas Kriteria                                |
-|--------------|---------------------------------------------------|
-| Gaming       | GPU, Processor, RAM                                |
-| Office       | Baterai, Berat, Harga                              |
-| Design       | Layar, RAM, Processor, GPU                         |
-| Programming  | Processor, RAM, Storage, Baterai                   |
+| Kebutuhan   | Prioritas Kriteria               |
+| ----------- | -------------------------------- |
+| Gaming      | GPU, Processor, RAM              |
+| Office      | Baterai, Berat, Harga            |
+| Design      | Layar, RAM, Processor, GPU       |
+| Programming | Processor, RAM, Storage, Baterai |
 
 ---
 
@@ -142,17 +145,16 @@ Silakan **fork**, buat **pull request**, atau ajukan **issue** untuk diskusi fit
 
 ## 📄 Lisensi
 
-Proyek ini dilisensikan di bawah **MIT License**.
----
+## Proyek ini dilisensikan di bawah **MIT License**.
 
 ## 👨‍💻 Anggota Kelompok
 
 Berikut adalah anggota yang berkontribusi dalam pengembangan proyek ini:
 
-| No | Nama Lengkap         | NIM           |
-|----|----------------------|---------------|
-| 1  | Zulian Pratama       | 211001001     |
-| 2  | Fadli Ramadhan       | 211001002     |
-| 3  | Salsabila Zahra      | 211001003     |
-| 4  | Daffa Hidayatullah   | 211001004     |
-| 5  | Ayu Lestari          | 211001005     |
+| No  | Nama Lengkap     | NIM        |
+| --- | ---------------- | ---------- |
+| 1   | Zulian Alhisyam  | 2022610026 |
+| 2   | Azli Ahmad Kevin | 2022610027 |
+| 3   | Dori Frans Dika  | 2110010018 |
+| 4   | Fikri Hidayat    | 2110010034 |
+| 5   | Ahmad Hafizil    | 2110010031 |
