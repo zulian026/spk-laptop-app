@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SPK Rekomendasi Laptop
 
-## Getting Started
+Sistem Pendukung Keputusan untuk rekomendasi laptop menggunakan metode TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution).
 
-First, run the development server:
+## Fitur
 
+- ✅ Rekomendasi laptop berdasarkan kebutuhan (Gaming, Office, Design, Programming)
+- ✅ Filter berdasarkan budget minimum dan maksimum
+- ✅ Perhitungan TOPSIS otomatis dengan bobot kriteria yang dapat disesuaikan
+- ✅ Ranking laptop berdasarkan skor preferensi
+- ✅ Interface yang responsive dan user-friendly
+- ✅ Database Supabase untuk penyimpanan data
+
+## Teknologi yang Digunakan
+
+- **Frontend**: Next.js 15, React 18, TypeScript
+- **Styling**: Tailwind CSS
+- **Database**: Supabase (PostgreSQL)
+- **Icons**: Lucide React
+- **Metode**: TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution)
+
+## Cara Instalasi
+
+1. Clone repository ini
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd spk-rekomendasi-laptop
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Setup environment variables
+Buat file `.env.local` dan tambahkan:
+```
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url_here
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key_here
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Setup database
+- Buat project baru di Supabase
+- Jalankan SQL script yang ada di file `database-setup.sql` untuk membuat tabel dan data sample
 
-## Learn More
+5. Jalankan aplikasi
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+6. Buka browser dan akses `http://localhost:3000`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Struktur Database
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Tabel `laptops`
+Menyimpan data spesifikasi laptop termasuk harga, processor, RAM, storage, GPU, dll.
 
-## Deploy on Vercel
+### Tabel `criteria`
+Menyimpan kriteria penilaian dengan bobot masing-masing untuk perhitungan TOPSIS.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Tabel `recommendations`
+Menyimpan riwayat rekomendasi pengguna.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Metode TOPSIS
+
+Sistem ini menggunakan metode TOPSIS dengan langkah-langkah:
+
+1. **Normalisasi Matriks**: Menggunakan metode vektor normalization
+2. **Pembobotan**: Mengalikan matriks ternormalisasi dengan bobot kriteria
+3. **Ideal Solutions**: Menentukan solusi ideal positif dan negatif
+4. **Perhitungan Jarak**: Menghitung jarak euclidean ke solusi ideal
+5. **Skor Preferensi**: Menghitung skor relatif untuk ranking
+
+## Kriteria Penilaian
+
+- **Harga** (Cost, 20%): Semakin rendah semakin baik
+- **Processor** (Benefit, 15%): Semakin baik semakin tinggi nilai
+- **RAM** (Benefit, 15%): Kapasitas lebih besar lebih baik
+- **Storage** (Benefit, 10%): Kapasitas lebih besar lebih baik
+- **GPU** (Benefit, 10%): Performa grafis lebih baik
+- **Layar** (Benefit, 8%): Ukuran sesuai kebutuhan
+- **Berat** (Cost, 7%): Semakin ringan semakin baik
+- **Baterai** (Benefit, 15%): Daya tahan lebih lama lebih baik
+
+## Penyesuaian Bobot Berdasarkan Kebutuhan
+
+- **Gaming**: Prioritas pada GPU, Processor, RAM
+- **Office**: Prioritas pada Baterai, Berat, Harga
+- **Design**: Prioritas pada Layar, RAM, Processor, GPU
+- **Programming**: Prioritas pada Processor, RAM, Storage, Baterai
+
+## Kontribusi
+
+Silakan buat pull request atau issue untuk perbaikan dan penambahan fitur.
+
+## Lisensi
+
+MIT License
