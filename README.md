@@ -1,98 +1,112 @@
-# SPK Rekomendasi Laptop
+💻 SPK Rekomendasi Laptop (Metode TOPSIS)
+Sistem Pendukung Keputusan (SPK) untuk memberikan rekomendasi laptop berdasarkan kebutuhan pengguna menggunakan metode TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution).
 
-Sistem Pendukung Keputusan untuk rekomendasi laptop menggunakan metode TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution).
+🚀 Live Demo
+🔗 Klik untuk melihat aplikasi live
 
-## Fitur
+✨ Fitur Unggulan
+✅ Rekomendasi laptop berdasarkan kebutuhan (Gaming, Office, Design, Programming)
+✅ Filter berdasarkan budget minimum dan maksimum
+✅ Perhitungan otomatis dengan metode TOPSIS
+✅ Penyesuaian bobot kriteria
+✅ Ranking laptop berdasarkan skor preferensi
+✅ Antarmuka responsive dan user-friendly
+✅ Terintegrasi dengan Supabase untuk penyimpanan data
 
-- ✅ Rekomendasi laptop berdasarkan kebutuhan (Gaming, Office, Design, Programming)
-- ✅ Filter berdasarkan budget minimum dan maksimum
-- ✅ Perhitungan TOPSIS otomatis dengan bobot kriteria yang dapat disesuaikan
-- ✅ Ranking laptop berdasarkan skor preferensi
-- ✅ Interface yang responsive dan user-friendly
-- ✅ Database Supabase untuk penyimpanan data
+🛠️ Teknologi yang Digunakan
+Kategori	Teknologi
+Frontend	Next.js 15, React 18, TypeScript
+Styling	Tailwind CSS
+Database	Supabase (PostgreSQL)
+Icons	Lucide React
+Metode	TOPSIS
 
-## Teknologi yang Digunakan
+⚙️ Cara Instalasi
+Clone repository
 
-- **Frontend**: Next.js 15, React 18, TypeScript
-- **Styling**: Tailwind CSS
-- **Database**: Supabase (PostgreSQL)
-- **Icons**: Lucide React
-- **Metode**: TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution)
+bash
+Copy
+Edit
+git clone https://github.com/zulian026/spk-laptop-app.git
+cd spk-laptop-app
+Install dependencies
 
-## Cara Instalasi
-
-1. Clone repository ini
-```bash
-git clone <repository-url>
-cd spk-rekomendasi-laptop
-```
-
-2. Install dependencies
-```bash
+bash
+Copy
+Edit
 npm install
-```
+Atur environment variables
 
-3. Setup environment variables
-Buat file `.env.local` dan tambahkan:
-```
+Buat file .env.local dan isi dengan:
+
+env
+Copy
+Edit
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url_here
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key_here
-```
+Setup database
 
-4. Setup database
-- Buat project baru di Supabase
-- Jalankan SQL script yang ada di file `database-setup.sql` untuk membuat tabel dan data sample
+Buat project baru di Supabase
 
-5. Jalankan aplikasi
-```bash
+Jalankan SQL script database-setup.sql untuk membuat tabel dan data contoh
+
+Jalankan aplikasi lokal
+
+bash
+Copy
+Edit
 npm run dev
-```
+Akses di browser: http://localhost:3000
 
-6. Buka browser dan akses `http://localhost:3000`
+🧱 Struktur Database
+📁 laptops
+Data spesifikasi laptop, termasuk harga, prosesor, RAM, storage, GPU, dll.
 
-## Struktur Database
+📁 criteria
+Daftar kriteria dengan bobot masing-masing yang digunakan dalam perhitungan TOPSIS.
 
-### Tabel `laptops`
-Menyimpan data spesifikasi laptop termasuk harga, processor, RAM, storage, GPU, dll.
+📁 recommendations
+Riwayat hasil rekomendasi pengguna.
 
-### Tabel `criteria`
-Menyimpan kriteria penilaian dengan bobot masing-masing untuk perhitungan TOPSIS.
+📊 Metode TOPSIS
+Langkah-langkah perhitungan dalam sistem ini:
 
-### Tabel `recommendations`
-Menyimpan riwayat rekomendasi pengguna.
+Normalisasi Matriks
+Menggunakan metode vektor normalisasi.
 
-## Metode TOPSIS
+Pembobotan Kriteria
+Mengalikan matriks normalisasi dengan bobot masing-masing kriteria.
 
-Sistem ini menggunakan metode TOPSIS dengan langkah-langkah:
+Solusi Ideal Positif & Negatif
+Menentukan nilai terbaik dan terburuk untuk setiap kriteria.
 
-1. **Normalisasi Matriks**: Menggunakan metode vektor normalization
-2. **Pembobotan**: Mengalikan matriks ternormalisasi dengan bobot kriteria
-3. **Ideal Solutions**: Menentukan solusi ideal positif dan negatif
-4. **Perhitungan Jarak**: Menghitung jarak euclidean ke solusi ideal
-5. **Skor Preferensi**: Menghitung skor relatif untuk ranking
+Perhitungan Jarak
+Menggunakan jarak Euclidean terhadap solusi ideal.
 
-## Kriteria Penilaian
+Skor Preferensi
+Menghitung nilai preferensi relatif untuk setiap alternatif.
 
-- **Harga** (Cost, 20%): Semakin rendah semakin baik
-- **Processor** (Benefit, 15%): Semakin baik semakin tinggi nilai
-- **RAM** (Benefit, 15%): Kapasitas lebih besar lebih baik
-- **Storage** (Benefit, 10%): Kapasitas lebih besar lebih baik
-- **GPU** (Benefit, 10%): Performa grafis lebih baik
-- **Layar** (Benefit, 8%): Ukuran sesuai kebutuhan
-- **Berat** (Cost, 7%): Semakin ringan semakin baik
-- **Baterai** (Benefit, 15%): Daya tahan lebih lama lebih baik
+🧮 Kriteria Penilaian & Bobot
+Kriteria	Tipe	Bobot	Penjelasan
+Harga	Cost	20%	Semakin murah semakin baik
+Processor	Benefit	15%	Semakin tinggi performanya semakin baik
+RAM	Benefit	15%	Kapasitas besar lebih baik
+Storage	Benefit	10%	Semakin besar semakin baik
+GPU	Benefit	10%	Kinerja grafis lebih tinggi lebih baik
+Layar	Benefit	8%	Ukuran sesuai kebutuhan desain/visual
+Berat	Cost	7%	Semakin ringan semakin baik
+Baterai	Benefit	15%	Daya tahan lebih lama lebih baik
 
-## Penyesuaian Bobot Berdasarkan Kebutuhan
+🎯 Penyesuaian Bobot Berdasarkan Kebutuhan
+Kebutuhan	Prioritas Kriteria
+Gaming	GPU, Processor, RAM
+Office	Baterai, Berat, Harga
+Design	Layar, RAM, Processor, GPU
+Programming	Processor, RAM, Storage, Baterai
 
-- **Gaming**: Prioritas pada GPU, Processor, RAM
-- **Office**: Prioritas pada Baterai, Berat, Harga
-- **Design**: Prioritas pada Layar, RAM, Processor, GPU
-- **Programming**: Prioritas pada Processor, RAM, Storage, Baterai
+🤝 Kontribusi
+Ingin menyempurnakan sistem ini?
+Silakan fork, buat pull request, atau ajukan issue untuk diskusi fitur dan perbaikan!
 
-## Kontribusi
-
-Silakan buat pull request atau issue untuk perbaikan dan penambahan fitur.
-
-## Lisensi
-
-MIT License
+📄 Lisensi
+Proyek ini dilisensikan di bawah MIT License.
