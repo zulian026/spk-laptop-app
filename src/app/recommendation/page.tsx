@@ -1,46 +1,54 @@
-'use client'
-import React, { useState } from 'react'
-import Link from 'next/link'
-import { RecommendationForm } from '@/components/RecommendationForm'
-import { LaptopCard } from '@/components/LaptopCard'
-import { LaptopService } from '@/lib/laptopService'
-import { TOPSISResult, RecommendationRequest } from '@/types/laptop'
-import { Laptop, TrendingUp, Award, Info, ArrowLeft, Home } from 'lucide-react'
+"use client";
+import React, { useState } from "react";
+import Link from "next/link";
+import { RecommendationForm } from "@/components/RecommendationForm";
+import { LaptopCard } from "@/components/LaptopCard";
+import { LaptopService } from "@/lib/laptopService";
+import { TOPSISResult, RecommendationRequest } from "@/types/laptop";
+import { Laptop, TrendingUp, Award, Info, ArrowLeft, Home } from "lucide-react";
 
 export default function RecommendationPage() {
-  const [results, setResults] = useState<TOPSISResult[]>([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [results, setResults] = useState<TOPSISResult[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleGetRecommendations = async (request: RecommendationRequest) => {
-    setLoading(true)
-    setError(null)
-    
+    setLoading(true);
+    setError(null);
+
     try {
-      const recommendations = await LaptopService.getRecommendations(request)
-      setResults(recommendations)
-      
+      const recommendations = await LaptopService.getRecommendations(request);
+      setResults(recommendations);
+
       if (recommendations.length === 0) {
-        setError('Tidak ada laptop yang sesuai dengan kriteria budget Anda. Coba perluas rentang budget.')
+        setError(
+          "Tidak ada laptop yang sesuai dengan kriteria budget Anda. Coba perluas rentang budget."
+        );
       }
     } catch (err) {
-      setError('Terjadi kesalahan saat mengambil rekomendasi. Silakan coba lagi.')
-      console.error('Error:', err)
+      setError(
+        "Terjadi kesalahan saat mengambil rekomendasi. Silakan coba lagi."
+      );
+      console.error("Error:", err);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
-  
   const getKebutuhanText = (kebutuhan: string) => {
     switch (kebutuhan) {
-      case 'gaming': return 'Gaming & Entertainment'
-      case 'office': return 'Perkantoran & Bisnis'
-      case 'design': return 'Design & Multimedia'
-      case 'programming': return 'Programming & Development'
-      default: return kebutuhan
+      case "gaming":
+        return "Gaming & Entertainment";
+      case "office":
+        return "Perkantoran & Bisnis";
+      case "design":
+        return "Design & Multimedia";
+      case "programming":
+        return "Programming & Development";
+      default:
+        return kebutuhan;
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -49,14 +57,14 @@ export default function RecommendationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <Link 
+              <Link
                 href="/"
                 className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
               >
                 <ArrowLeft className="w-5 h-5" />
                 <span className="hidden sm:inline">Kembali ke Beranda</span>
               </Link>
-              
+
               <div className="flex items-center gap-3">
                 <Laptop className="w-8 h-8 text-blue-600" />
                 <div>
@@ -70,7 +78,7 @@ export default function RecommendationPage() {
               </div>
             </div>
 
-            <Link 
+            <Link
               href="/"
               className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
             >
@@ -98,7 +106,7 @@ export default function RecommendationPage() {
               <h2 className="text-lg font-semibold text-gray-900 mb-4">
                 Form Rekomendasi
               </h2>
-              <RecommendationForm 
+              <RecommendationForm
                 onSubmit={handleGetRecommendations}
                 loading={loading}
               />
@@ -114,9 +122,11 @@ export default function RecommendationPage() {
                   </h3>
                   <div className="text-sm text-blue-800 space-y-2">
                     <p>
-                      TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution) 
-                      adalah metode pengambilan keputusan multikriteria yang menentukan solusi terbaik 
-                      berdasarkan jarak terdekat dari solusi ideal positif dan terjauh dari solusi ideal negatif.
+                      TOPSIS (Technique for Order of Preference by Similarity to
+                      Ideal Solution) adalah metode pengambilan keputusan
+                      multikriteria yang menentukan solusi terbaik berdasarkan
+                      jarak terdekat dari solusi ideal positif dan terjauh dari
+                      solusi ideal negatif.
                     </p>
                     <div className="mt-3">
                       <h4 className="font-medium mb-2">Kriteria Penilaian:</h4>
@@ -154,21 +164,31 @@ export default function RecommendationPage() {
                       Hasil Rekomendasi
                     </h2>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                     <div className="bg-blue-50 rounded-lg p-4">
-                      <div className="text-2xl font-bold text-blue-600">{results.length}</div>
-                      <div className="text-sm text-blue-800">Laptop Ditemukan</div>
+                      <div className="text-2xl font-bold text-blue-600">
+                        {results.length}
+                      </div>
+                      <div className="text-sm text-blue-800">
+                        Laptop Ditemukan
+                      </div>
                     </div>
                     <div className="bg-green-50 rounded-lg p-4">
                       <div className="text-2xl font-bold text-green-600">
-                        {results[0]?.score.toFixed(3) || '0.000'}
+                        {results[0]?.score.toFixed(3) || "0.000"}
                       </div>
-                      <div className="text-sm text-green-800">Skor Tertinggi</div>
+                      <div className="text-sm text-green-800">
+                        Skor Tertinggi
+                      </div>
                     </div>
                     <div className="bg-purple-50 rounded-lg p-4">
-                      <div className="text-2xl font-bold text-purple-600">TOPSIS</div>
-                      <div className="text-sm text-purple-800">Metode Analisis</div>
+                      <div className="text-2xl font-bold text-purple-600">
+                        TOPSIS
+                      </div>
+                      <div className="text-sm text-purple-800">
+                        Metode Analisis
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -184,22 +204,24 @@ export default function RecommendationPage() {
                           </div>
                         </div>
                       )}
-                      <LaptopCard 
+                      <LaptopCard
                         laptop={result.laptop}
                         score={result.score}
                         ranking={result.ranking}
                       />
                     </div>
                   ))}
-                  
+
                   {results.length > 5 && (
                     <div className="text-center py-4">
                       <div className="bg-white rounded-lg p-4 shadow-sm">
                         <p className="text-gray-600 mb-2">
-                          Menampilkan 5 laptop teratas dari {results.length} hasil
+                          Menampilkan 5 laptop teratas dari {results.length}{" "}
+                          hasil
                         </p>
                         <p className="text-sm text-gray-500">
-                          Hasil sudah diurutkan berdasarkan skor TOPSIS tertinggi
+                          Hasil sudah diurutkan berdasarkan skor TOPSIS
+                          tertinggi
                         </p>
                       </div>
                     </div>
@@ -216,12 +238,15 @@ export default function RecommendationPage() {
                     Siap Memulai Pencarian?
                   </h3>
                   <p className="text-gray-600 mb-6">
-                    Silakan isi form rekomendasi di sebelah kiri untuk mendapatkan 
-                    daftar laptop terbaik yang sesuai dengan kebutuhan dan budget Anda.
+                    Silakan isi form rekomendasi di sebelah kiri untuk
+                    mendapatkan daftar laptop terbaik yang sesuai dengan
+                    kebutuhan dan budget Anda.
                   </p>
-                  
+
                   <div className="bg-blue-50 rounded-lg p-4 text-left">
-                    <h4 className="font-medium text-blue-900 mb-2">Langkah-langkah:</h4>
+                    <h4 className="font-medium text-blue-900 mb-2">
+                      Langkah-langkah:
+                    </h4>
                     <ol className="list-decimal list-inside text-sm text-blue-800 space-y-1">
                       <li>Pilih kebutuhan utama Anda</li>
                       <li>Tentukan rentang budget</li>
@@ -240,7 +265,8 @@ export default function RecommendationPage() {
                   Menganalisis Data...
                 </h3>
                 <p className="text-gray-600">
-                  Sistem sedang memproses kriteria Anda menggunakan metode TOPSIS
+                  Sistem sedang memproses kriteria Anda menggunakan metode
+                  TOPSIS
                 </p>
               </div>
             )}
@@ -257,18 +283,19 @@ export default function RecommendationPage() {
                 © 2024 SPK Rekomendasi Laptop - Sistem Pendukung Keputusan
               </p>
               <p className="text-sm">
-                Dibuat dengan Next.js 15, TypeScript, Supabase, dan metode TOPSIS
+                Dibuat dengan Next.js 15, TypeScript, Supabase, dan metode
+                TOPSIS
               </p>
             </div>
-            
+
             <div className="flex items-center gap-4">
-              <Link 
+              <Link
                 href="/"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
               >
                 Beranda
               </Link>
-              <Link 
+              <Link
                 href="/recommendation"
                 className="text-blue-600 font-medium"
               >
@@ -279,5 +306,5 @@ export default function RecommendationPage() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
