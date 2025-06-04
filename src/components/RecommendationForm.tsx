@@ -7,6 +7,8 @@ interface RecommendationFormProps {
   loading: boolean
 }
 
+
+
 export const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit, loading }) => {
   const [formData, setFormData] = useState<RecommendationRequest>({
     kebutuhan: 'office',
@@ -50,7 +52,8 @@ export const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit
               Budget Minimum
             </label>
             <div className="relative">
-              <DollarSign className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+              <span className="absolute left-3 top-3 w-5 h-5 text-gray-400">Rp</span>
+
               <input
                 type="number"
                 value={formData.budget_min}
@@ -71,7 +74,8 @@ export const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit
               Budget Maximum
             </label>
             <div className="relative">
-              <DollarSign className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+              <span className="absolute left-3 top-3 w-5 h-5 text-gray-400">Rp</span>
+
               <input
                 type="number"
                 value={formData.budget_max}
